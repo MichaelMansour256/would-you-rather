@@ -2,7 +2,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.card {
+  padding-left:20px;
+  flex: auto;
+  background-color: #697784;
+  color:burlywood;
+}
 body {
   margin: 0;
   padding: 0;
