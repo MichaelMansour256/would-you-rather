@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { handleAddQuestion } from '../actions/questions'
 import {connect} from 'react-redux'
-
+import {Redirect} from 'react-router-dom'
 
 class NewQuestion extends Component {
     state = {
         optionOne: "",
-        optionTwo: ""
+        optionTwo: "",
+        toHome: false,
     }
     handleChange1 = (e) => {
         const text = e.target.value
@@ -24,21 +25,24 @@ class NewQuestion extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        const {authedUser}=this.props
+        const {author}=this.props
         const { optionOne , optionTwo } = this.state
-        const { dispatch } = this.props
-        console.log(authedUser)
-        console.log(optionOne)
-        console.log(optionTwo)
-        dispatch(handleAddQuestion({optionOne,optionTwo,authedUser}))
+        const { dispatch,id } = this.props
+        console.log(author)
+        dispatch(handleAddQuestion(optionOne,optionTwo,author))
 
         this.setState(() => ({
             optionOne: '',
             optionTwo: '',
+            toHome: id ? false : true,
         }))
+
     }
     render() {
-        const { optionOne, optionTwo } = this.state
+        const { optionOne, optionTwo , toHome} = this.state
+        if (toHome === true) {
+            return <Redirect to='/' />
+          }
         return (
             <div>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
@@ -62,7 +66,7 @@ class NewQuestion extends Component {
 function mapStateToProps ({authedUser}, { id }) {
     
     return {
-      authedUser,
+      author:authedUser,
       
     }
   }

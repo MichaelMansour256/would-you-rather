@@ -9,6 +9,7 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar  from 'react-redux-loading'
 import AnswerQuestion from './AnswerQuestion';
 import LogIn from './LogIn'
+import { Redirect } from 'react-router-dom';
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +21,8 @@ class App extends Component {
         <Fragment>
         <LoadingBar />
           
-          
+          {
+          this.props.authedUser==="signedOut" ? <Redirect to="login"/>:    
           <div className='container'>
             {this.props.loading === true
               ? null
@@ -36,6 +38,7 @@ class App extends Component {
               </div>
             }
           </div>
+          }
         </Fragment>
       </Router>
     )

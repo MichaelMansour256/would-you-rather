@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Dropdown, Button, Divider , Segment} from 'semantic-ui-react'
-
+import {setAuthedUser} from './../actions/authedUser'
 
 class DropdownExampleSelection extends Component {
+  handleLogin=(e,data)=>{
+    const {dispatch}=this.props
+    // to do change the user 
+    dispatch(setAuthedUser(data.key))
+  }
   render() {
+    
 
     return (
       <div>
@@ -14,6 +20,7 @@ class DropdownExampleSelection extends Component {
           selection
           options={this.props.users}
           defaultValue={this.props.users[0].value}
+          onChange={this.handleLogin}
         />
         <Segment basic textAlign='center'>
 
@@ -22,7 +29,7 @@ class DropdownExampleSelection extends Component {
 
         </Segment>
 
-        <Button positive className='container'>LOG IN</Button>
+        <Button positive className='container' >LOG IN</Button>
       </div>
     )
   }

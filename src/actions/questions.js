@@ -12,18 +12,18 @@ function addQuestion (question) {
   }
 }
 
-export function handleAddQuestion (optionOne, optionTwo , authedUser) {
+export function handleAddQuestion (optionOneText, optionTwoText , author) {
   return (dispatch) => {
     
 
     dispatch(showLoading())
 
     return saveQuestion({
-      optionOne, optionTwo , authedUser
+      optionOneText, optionTwoText , author
     })
       .then((question) => dispatch(addQuestion(question)))
       .then((question) => dispatch(addQuestionToUser(question)))
-      .then(hideLoading())
+      .then(dispatch(hideLoading()))
       
   }
 }

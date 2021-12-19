@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
+//import {handleRemoveAuthedUser} from './../actions/authedUser'
 class Nav extends Component {
+  handleClick=(e)=>{
+    e.preventDefault()
+    //const { dispatch } = this.props
+    //dispatch(handleRemoveAuthedUser())
+  }
   render(){
-    console.log("aaaaaaaaaaaaa",this.props.authedUser)
+    //console.log("aaaaaaaaaaaaa",this.props.authedUser)
   return (
     <nav className='nav'>
       <ul>
@@ -26,7 +32,7 @@ class Nav extends Component {
           <img src={this.props.avatar} alt='user_avatar' className='avatar' />
         </li>
         <li>
-          <Link to="/login">logout ? </Link>
+          <Link to="/login" >logout ? </Link>
         </li>
       </ul>
     </nav>

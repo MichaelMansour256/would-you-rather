@@ -8,6 +8,7 @@ class Question extends Component {
         return (
             <div className='card_q'>
                 <Link to={`/question/${this.props.id}`} >
+                    
                     <img className='avatar' src={this.props.avatar} alt='author avatar' />
                     <Segment ><div>{this.props.question.optionOne.text}</div></Segment>
                     <Segment basic textAlign='center'>
