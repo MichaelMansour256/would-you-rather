@@ -1,12 +1,15 @@
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.card {
+.card_q {
   padding-left:20px;
   flex: auto;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin-bottom: 20px;
+  text-align:center;
 }
 
 
@@ -181,3 +184,4 @@ li {
   font-size: 20px;
   color: #C3392A;
 }
+

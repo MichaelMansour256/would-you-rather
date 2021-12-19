@@ -6,13 +6,12 @@ class UserCard extends Component {
 
         return (
             <Card >
-                <img src={this.props.u.avatar} alt='user_avatar' height={100} />
+                <img src={this.props.u.avatar} alt='user_avatar'  />
                 <Card.Content >
                     <Card.Header>{this.props.u.user}</Card.Header>
-                    <Card.Meta>
-                        <span >Question Asked:{this.props.u.asked_count}</span>
-                    </Card.Meta>
+                    
                     <Card.Description>
+                        <span >Question Asked:{this.props.u.asked_count}</span><br/>
                         <span >Question Answerd:{this.props.u.answerd_count}</span><br/>
                         <span >Score:{this.props.u.answerd_count+this.props.u.asked_count}</span>
                     </Card.Description>
