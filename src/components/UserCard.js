@@ -5,18 +5,19 @@ class UserCard extends Component {
     render() {
 
         return (
-            <Card className='card'>
-                <img src='https://react.semantic-ui.com/images/avatar/large/matthew.png' alt='user_avatar' height={100} />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
+            <Card >
+                <img src={this.props.u.avatar} alt='user_avatar' height={100} />
+                <Card.Content >
+                    <Card.Header>{this.props.u.user}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
+                        <span >Question Asked:{this.props.u.asked_count}</span>
                     </Card.Meta>
                     <Card.Description>
-                        Matthew is a musician living in Nashville.
+                        <span >Question Answerd:{this.props.u.answerd_count}</span><br/>
+                        <span >Score:{this.props.u.answerd_count+this.props.u.asked_count}</span>
                     </Card.Description>
                 </Card.Content>
-                
+
             </Card>
         )
     }
