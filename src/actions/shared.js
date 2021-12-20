@@ -21,12 +21,16 @@ export function handleInitialData() {
 }
 
 export function handleSaveQuestionAnswer(authedUser, qid, answer) {
-  return (dispatch) => {
+  console.log("1" , authedUser,qid,answer)
+  return dispatch => {
+    //console.log("2" , authedUser,qid,answer) 
     dispatch(showLoading())
-    return saveQuestionAnswer(authedUser, qid, answer)
-    .then(addAnswerToQuestion(authedUser, qid, answer))
-    .then(addAnswerToUser(authedUser, qid, answer))
-    .then(dispatch(hideLoading()));
-   
+    //console.log("3" , authedUser,qid,answer)
+    return saveQuestionAnswer(authedUser, qid, answer).then(()=>{
+      //console.log("4" , authedUser,qid,answer)
+      dispatch(addAnswerToQuestion)
+      dispatch(addAnswerToUser)
+      dispatch(hideLoading())
+    })
   };
 }
