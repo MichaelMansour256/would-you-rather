@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {Segment,Divider} from 'semantic-ui-react'
 class Question extends Component {
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         return (
             <div className='card_q'>
                 <Link to={`/question/${this.props.id}`} >

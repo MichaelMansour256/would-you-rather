@@ -5,14 +5,14 @@ import Question from './Question'
 class Questions extends Component {
 
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         const panes = [
             {
                 menuItem: 'UnAnswerd Question ', render: () => {
                     return (
                         <div className="qust_tab">
                             {this.props.unanswerd.map(
-                                (a) => (<Question id={a} />)
+                                (a) => (<Question id={a} key={a}/>)
                             )}
                         </div>
                     )
@@ -23,7 +23,7 @@ class Questions extends Component {
                     return (
                         <div className="qust_tab">
                             {this.props.answerd.map(
-                                (a) => (<Question id={a} />)
+                                (a) => (<Question id={a} key={a}/>)
                             )}
                         </div>
                     )

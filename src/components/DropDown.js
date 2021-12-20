@@ -1,26 +1,44 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Dropdown, Button, Divider , Segment} from 'semantic-ui-react'
+import { Dropdown,Form , Divider , Segment} from 'semantic-ui-react'
 import {setAuthedUser} from './../actions/authedUser'
-
+import {Redirect} from 'react-router-dom'
 class DropdownExampleSelection extends Component {
-  handleLogin=(e,data)=>{
+  state={
+    value:"signedOut",
+    toHome: false
+  }
+  getUser=(e,{value})=>{
+    console.log(value);
+    this.setState({
+      value
+    })
+  }
+  handleLogin=(e)=>{
+    
     const {dispatch}=this.props
     // to do change the user 
-    dispatch(setAuthedUser(data.key))
+    dispatch(setAuthedUser(this.state.value))
+    this.setState({
+      toHome: true
+    })
   }
   render() {
-    
+    const {toHome} = this.state
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
 
     return (
       <div>
+        <Form onSubmit={this.handleLogin}> 
         <Dropdown
           placeholder='Choose User'
           fluid
           selection
           options={this.props.users}
-          defaultValue={this.props.users[0].value}
-          onChange={this.handleLogin}
+          onChange={this.getUser}
+          //defaultValue={this.props.users[0].value}
         />
         <Segment basic textAlign='center'>
 
@@ -29,7 +47,8 @@ class DropdownExampleSelection extends Component {
 
         </Segment>
 
-        <Button positive className='container' >LOG IN</Button>
+        <Form.Button positive className='container' >LOG IN</Form.Button>
+        </Form>
       </div>
     )
   }
@@ -40,7 +59,7 @@ function mapStateToProps({ users }) {
     usersArray.push({
       key: users[k].id,
       text: users[k].name,
-      value: users[k].name,
+      value: users[k].id,
       image: { avatar: true, src: users[k].avatarURL }
     })
     return k

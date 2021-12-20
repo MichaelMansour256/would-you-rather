@@ -3,12 +3,11 @@ import UserCard from './UserCard'
 import {connect} from 'react-redux'
 class Leaderboard extends Component{
     render(){
-        //console.log("aaaaaaaaaaaaa",this.props.users)
         return (
             
             <div>
                 {
-                    this.props.users.map((u)=>(<UserCard u={u}/>))
+                    this.props.users.map((u)=>(<UserCard u={u} key={u.user}/>))
                 }
                 
             </div>

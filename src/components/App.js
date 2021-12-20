@@ -20,16 +20,16 @@ class App extends Component {
       <Router>
         <Fragment>
         <LoadingBar />
-          
-          {
-          this.props.authedUser==="signedOut" ? <Redirect to="login"/>:    
+        <Nav />
+          {   
+          this.props.authedUser==="signedOut"? <Redirect to='login'/>:
           <div className='container'>
             {this.props.loading === true
               ? null
               :
                
               <div>
-                <Nav />
+                
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/add' component={NewQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />

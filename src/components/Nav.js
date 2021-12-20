@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
-//import {handleRemoveAuthedUser} from './../actions/authedUser'
+//import LogIn from './LogIn'
+//import { Redirect } from 'react-router-dom'
 class Nav extends Component {
-  handleClick=(e)=>{
-    e.preventDefault()
-    //const { dispatch } = this.props
-    //dispatch(handleRemoveAuthedUser())
+  state={
+     disable:false
   }
   render(){
-    //console.log("aaaaaaaaaaaaa",this.props.authedUser)
+  
   return (
     <nav className='nav'>
       <ul>
@@ -28,10 +27,14 @@ class Nav extends Component {
             Leader board
           </NavLink>
         </li>
+        {this.props.authedUser==="signedOut"? this.setState({
+          disable:true
+        }) : null
+        }
         <li>
-          <img src={this.props.avatar} alt='user_avatar' className='avatar' />
+          <img src={this.props.avatar} alt='user_avatar' className='avatar' hidden={this.state.disable}/>
         </li>
-        <li>
+        <li hidden={this.state.disable}>
           <Link to="/login" >logout ? </Link>
         </li>
       </ul>
@@ -40,6 +43,9 @@ class Nav extends Component {
 }
 }
 function mapStateToProps({users , authedUser}){
-  return {avatar:users[authedUser].avatarURL}
+  return {
+    avatar: users[authedUser] ? users[authedUser].avatarURL : null ,
+    authedUser
+  }
 }
 export default connect(mapStateToProps)(Nav)

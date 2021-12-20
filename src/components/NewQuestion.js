@@ -8,6 +8,7 @@ class NewQuestion extends Component {
         optionOne: "",
         optionTwo: "",
         toHome: false,
+        
     }
     handleChange1 = (e) => {
         const text = e.target.value
@@ -25,11 +26,11 @@ class NewQuestion extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        const {author}=this.props
+        const {authedUser}=this.props
         const { optionOne , optionTwo } = this.state
         const { dispatch,id } = this.props
-        console.log(author)
-        dispatch(handleAddQuestion(optionOne,optionTwo,author))
+        console.log(authedUser)
+        dispatch(handleAddQuestion(optionOne,optionTwo,authedUser))
 
         this.setState(() => ({
             optionOne: '',
@@ -38,11 +39,13 @@ class NewQuestion extends Component {
         }))
 
     }
+    
     render() {
-        const { optionOne, optionTwo , toHome} = this.state
+        const { optionOne, optionTwo , toHome } = this.state
         if (toHome === true) {
             return <Redirect to='/' />
-          }
+        }
+        
         return (
             <div>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
@@ -66,7 +69,7 @@ class NewQuestion extends Component {
 function mapStateToProps ({authedUser}, { id }) {
     
     return {
-      author:authedUser,
+        authedUser:authedUser,
       
     }
   }
