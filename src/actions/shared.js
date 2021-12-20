@@ -5,7 +5,7 @@ import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 import {saveQuestionAnswer} from './../utils/api'
 
-const AUTHED_ID = 'singedOut'
+const AUTHED_ID = 'signedOut'
 
 export function handleInitialData () {
   return (dispatch) => {

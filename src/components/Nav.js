@@ -5,7 +5,15 @@ import {connect} from 'react-redux'
 //import { Redirect } from 'react-router-dom'
 class Nav extends Component {
   state={
-     disable:false
+     disable:true
+  }
+  componentDidMount(){
+    if(this.props.authedUser !=="signedOut"){
+    this.setState({
+
+      disable:false
+    })
+  }
   }
   render(){
   
@@ -27,10 +35,6 @@ class Nav extends Component {
             Leader board
           </NavLink>
         </li>
-        {this.props.authedUser==="signedOut"? this.setState({
-          disable:true
-        }) : null
-        }
         <li>
           <img src={this.props.avatar} alt='user_avatar' className='avatar' hidden={this.state.disable}/>
         </li>
