@@ -10,7 +10,9 @@ class AnswerQuestion extends Component {
     handleSubmit =(e)=>{
         e.preventDefault()
         console.log("hiiii")
-        handleSaveQuestionAnswer(this.props.authedUser, this.props.question.id, this.state.value);
+        const {dispatch}=this.props
+        const answer = this.state.value ==="1"? "optionOne" :"optionTwo" 
+        dispatch(handleSaveQuestionAnswer(this.props.authedUser, this.props.question.id,answer ));
     }
     handleChange = (e, { value }) => {
         e.preventDefault()

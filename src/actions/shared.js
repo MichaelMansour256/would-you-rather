@@ -21,15 +21,11 @@ export function handleInitialData() {
 }
 
 export function handleSaveQuestionAnswer(authedUser, qid, answer) {
-  console.log("1" , authedUser,qid,answer)
-  return dispatch => {
-    //console.log("2" , authedUser,qid,answer) 
+  return (dispatch) => {
     dispatch(showLoading())
-    //console.log("3" , authedUser,qid,answer)
     return saveQuestionAnswer(authedUser, qid, answer).then(()=>{
-      //console.log("4" , authedUser,qid,answer)
-      dispatch(addAnswerToQuestion)
-      dispatch(addAnswerToUser)
+      dispatch(addAnswerToQuestion(authedUser, qid, answer))
+      dispatch(addAnswerToUser(authedUser, qid, answer))
       dispatch(hideLoading())
     })
   };
