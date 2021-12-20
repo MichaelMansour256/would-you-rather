@@ -5,7 +5,6 @@ import Question from './Question'
 class Questions extends Component {
 
     render() {
-        //console.log(this.props)
         const panes = [
             {
                 menuItem: 'UnAnswerd Question ', render: () => {

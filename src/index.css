@@ -12,6 +12,9 @@ code {
   text-align:center;
 }
 
+.span_login{
+  display: inline !important;
+}
 
 body {
   margin: 0;

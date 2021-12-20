@@ -9,6 +9,7 @@ class AnswerQuestion extends Component {
     }
     handleSubmit =(e)=>{
         e.preventDefault()
+        console.log("hiiii")
         handleSaveQuestionAnswer(this.props.authedUser, this.props.question.id, this.state.value);
     }
     handleChange = (e, { value }) => {

@@ -25,14 +25,3 @@ export function addQuestionToUser({ id, author }) {
     author
   };
 }
-/*
-export function handleSaveAnswer(authedUser, qid, answer){
-  return (dispatch) => {
-    dispatch(addAnswerToUser(authedUser, qid, answer));
-    dispatch(addAnswerToQuestion(authedUser, qid, answer));
-
-    return saveQuestionAnswer(authedUser, qid, answer).catch(e => {
-      console.warn('Error in handleSaveQuestionAnswer:', e);
-    });
-  };
-}*/
