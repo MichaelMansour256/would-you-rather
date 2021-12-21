@@ -37,8 +37,12 @@ class Questions extends Component {
     }
 }
 function mapStateToProps({ questions, users, authedUser }) {
-    const answerd = Object.keys(questions).filter((k) => (questions[k].optionOne.votes.includes(authedUser)) || questions[k].optionTwo.votes.includes(authedUser))
-    const unanswerd = Object.keys(questions).filter((k) => !(questions[k].optionOne.votes.includes(authedUser)) && !questions[k].optionTwo.votes.includes(authedUser))
+    const answerd = Object.keys(questions)
+                    .sort((a,b)=>questions[b].timestamp - questions[a].timestamp)
+                    .filter((k) => (questions[k].optionOne.votes.includes(authedUser))|| questions[k].optionTwo.votes.includes(authedUser))
+    const unanswerd = Object.keys(questions)
+                    .sort((a,b)=>questions[b].timestamp - questions[a].timestamp)
+                    .filter((k) => !(questions[k].optionOne.votes.includes(authedUser)) && !questions[k].optionTwo.votes.includes(authedUser))
     return {
         unanswerd: unanswerd,
         answerd: answerd

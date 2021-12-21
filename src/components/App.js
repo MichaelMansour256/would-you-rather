@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch , Redirect} from 'react-router-dom'
 import Dashboard from "./Dashboard";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
@@ -34,9 +34,10 @@ class App extends Component {
                 <Route path='/' exact component={Dashboard} />
                 <Route path='/add' component={NewQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/question/:id' component={AnswerQuestion} />
+                <Route path='/questions/:id' component={AnswerQuestion} />
                 <Route path='/login' exact component={LogIn} />
-                <Route  component={NotFound}/>
+                <Route path='/404' component={NotFound}/>
+                <Redirect to="/404" />
                 </Switch>
               </div>
             }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Radio, Form, FormField, Button } from 'semantic-ui-react'
 import QuestionResult from './QuestionResult'
 import { handleSaveQuestionAnswer } from '../actions/shared'
+import { Redirect } from 'react-router-dom'
 class AnswerQuestion extends Component {
     state = {
         value: "1"
@@ -22,10 +23,13 @@ class AnswerQuestion extends Component {
         })
     }
     render() {
-
+        if(this.props.question===undefined){
+            return <Redirect to='/404' />
+        }
         const { optionOne, optionTwo } = this.props.question
         const { authedUser } = this.props 
         const votes = optionTwo.votes.concat(optionOne.votes)
+        
         return (
             votes.includes(authedUser) ? (<div> <QuestionResult id={this.props.id} optionOneVotes={optionOne.votes} optionTwoVotes={optionTwo.votes}/> </div>)
                 :

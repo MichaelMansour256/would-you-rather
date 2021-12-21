@@ -6,7 +6,7 @@ class Question extends Component {
     render() {
         return (
             <div className='card_q'>
-                <Link to={`/question/${this.props.id}`} >
+                <Link to={`/questions/${this.props.id}`} >
                     
                     <img className='avatar' src={this.props.avatar} alt='author avatar' />
                     <Segment ><div>{this.props.question.optionOne.text}</div></Segment>
